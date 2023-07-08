@@ -53,10 +53,10 @@ class UI {
 class Store {
     static getBooks() {
         let books;
-        if(localStorage.getItem("books") === null){
+        if(sessionStorage.getItem("books") === null){
             books =[];
         } else {
-            books = JSON.parse(localStorage.getItem("books"));
+            books = JSON.parse(sessionStorage.getItem("books"));
         }
         return books;
     }
@@ -64,7 +64,7 @@ class Store {
     static addBook(book){
         const books = Store.getBooks();
         books.push(book);
-        localStorage.setItem("books", JSON.stringify(books)); 
+        sessionStorage.setItem("books", JSON.stringify(books)); 
     }
 
     static removeBook(title) {
@@ -74,7 +74,7 @@ class Store {
                 books.splice(index, 1);
             }
         });
-        localStorage.setItem("books", JSON.stringify(books));
+        sessionStorage.setItem("books", JSON.stringify(books));
     }
 }
 
